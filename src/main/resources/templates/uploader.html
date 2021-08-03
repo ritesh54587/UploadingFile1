@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<title>File upload Example</title>
+
+<body>
+<h1>File upload Example</h1>
+
+<input id = "fileupload" type="file" name="fileupload">
+<button id = "upload-button " onclick="uploadFile()"> Upload </button>
+<script>
+async function uploadFile(){
+	let formData = new FormData();
+	formData.append("file", fileupload.files[0]);
+	let response = await fetch('/upload',{
+		method: "POST",
+		body: formData
+	});
+	
+	if(response.status==200){
+		alert("File sucessfully upload.");
+	}
+}
+
+
+
+
+</script>
+
+
+</body>
+
+
+</html>
